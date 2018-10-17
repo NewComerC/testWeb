@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .row {padding:15px;font-size: large}
+
+        /*get the fontsize which is saze as row*/
+        .col-md-1 input{
+            font-size: inherit;
+        }
+
+        .hideButton{background-color: skyblue;border-radius: 5px;}
+
+        .submitButton{background-color: whitesmoke;border-radius: 5px;}
+    </style>
+    <script>
+        //functions
+        function hide(obj){
+            //get the row and remove it from container
+            divOb=obj.parentNode;
+            rowOb=divOb.parentNode;
+            containerOb=rowOb.parentNode;
+            containerOb.removeChild(rowOb);
+        }
+
+        function send(obj) {
+            //get the list of message
+            contentOb=document.getElementById("content");
+
+            //get the input
+            var msg=document.getElementById("msg").value;
+            var user=document.getElementById("user").value;
+            var now=new Date();
+
+            //create a new row
+            newRow=document.createElement("div");
+            newRow.setAttribute("class","row");
+
+            //create a new message element node
+            mesNode=document.createElement("div");
+            mesNode.setAttribute("class","col-md-5");
+            mesNode.innerText=msg;
+
+            //create a new username element node
+            userNode=document.createElement("div");
+            userNode.setAttribute("class","col-md-3");
+            userNode.innerText=user;
+
+            //generate date information and form the datenode
+            dateNode=document.createElement("div");
+            dateNode.setAttribute("class","col-md-3");
+            dateNode.innerText=now.getMonth()+"/"+now.getDate()+"/"+(now.getYear()+1900);
+
+            //clone button from obj and get a new button
+            buttonNode=document.createElement("div");
+            buttonNode.setAttribute("class","col-md-1");
+            btn=obj.cloneNode(true);
+            btn.setAttribute("value","hide");
+            btn.setAttribute("onclick","hide(this)");
+            buttonNode.appendChild(btn);
+
+            //inital the new row
+            newRow.appendChild(mesNode);
+            newRow.appendChild(userNode);
+            newRow.appendChild(dateNode);
+            newRow.appendChild(buttonNode);
+
+            //add it to content
+            contentOb.appendChild(newRow);
+
+        }
+    </script>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="page1.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">MessageBox</li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">Message</div>
+        <div class="col-md-3">User</div>
+        <div class="col-md-3">Date</div>
+    </div>
+    <hr>
+    <div id="content">
+    <div class="row">
+        <div class="col-md-5">Good Morning</div>
+        <div class="col-md-3">Bob</div>
+        <div class="col-md-3">10/1/2018</div>
+        <div class="col-md-1"><input type="button" class="hideButton" value="hide" onclick="hide(this)"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">Nice to meet you</div>
+        <div class="col-md-3">Amy</div>
+        <div class="col-md-3">9/30/2018</div>
+        <div class="col-md-1"><input type="button" class="hideButton" value="hide" onclick="hide(this)"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">How's it going</div>
+        <div class="col-md-3">John</div>
+        <div class="col-md-3">9/25/2018</div>
+        <div class="col-md-1"><input type="button" class="hideButton" value="hide" onclick="hide(this)"></div>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5"><input type="text" id="msg" placeholder="msg"></div>
+        <div class="col-md-6"><input type="text" id="user" placeholder="User"></div>
+        <div class="col-md-1"><input type="submit" class="submitButton" value="send" onclick="send(this)"></div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

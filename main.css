@@ -1,0 +1,11 @@
+body {	font: 1.2em Palantino, Times, serif;}
+h1,h2,h3,h4 {font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2;}
+h1 {font-size: 2em;}
+h2 {font-size: 1.6em;}
+h3 {font-size: 1.4em;}
+h4 {font-size: 1.2em;}
+a {color: #0000ff;
+    text-decoration: none;}
+a:hover {text-decoration: underline;}
+
